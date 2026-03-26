@@ -30,15 +30,17 @@ Verify `apify` CLI is installed:
 apify --help
 ```
 
-If not installed:
+If not installed, use one of these methods (listed in order of preference):
 
 ```bash
-curl -fsSL https://apify.com/install-cli.sh | bash
+# Preferred: install via a package manager (provides integrity checks)
+npm install -g apify-cli
 
 # Or (Mac): brew install apify-cli
-# Or (Windows): irm https://apify.com/install-cli.ps1 | iex
-# Or: npm install -g apify-cli
 ```
+
+> **Security note:** Do NOT install the CLI by piping remote scripts to a shell
+> (e.g. `curl … | bash` or `irm … | iex`). Always use a package manager.
 
 Verify CLI is logged in:
 
@@ -46,11 +48,23 @@ Verify CLI is logged in:
 apify info  # Should return your username
 ```
 
-If not logged in, check if `APIFY_TOKEN` environment variable is defined. If not, ask the user to generate one at https://console.apify.com/settings/integrations, then:
+If not logged in, check if the `APIFY_TOKEN` environment variable is defined (if not, ask the user to generate one at https://console.apify.com/settings/integrations and then define `APIFY_TOKEN` with it).
+
+Then authenticate using one of these methods:
 
 ```bash
-apify login -t $APIFY_TOKEN
+# Option 1 (preferred): The CLI automatically reads APIFY_TOKEN from the environment.
+# Just ensure the env var is exported and run any apify command — no explicit login needed.
+
+# Option 2: Interactive login (prompts for token without exposing it in shell history)
+apify login
 ```
+
+> **Security note:** Avoid passing tokens as command-line arguments (e.g. `apify login -t <token>`).
+> Arguments are visible in process listings and may be recorded in shell history.
+> Prefer environment variables or interactive login instead.
+> Never log, print, or embed `APIFY_TOKEN` in source code or configuration files.
+> Use a token with the minimum required permissions (scoped token) and rotate it periodically.
 
 ## Actorization Checklist
 
@@ -149,6 +163,17 @@ After deploying, you can monetize your actor in the Apify Store. The recommended
 Configure PPE in the Apify Console under Actor > Monetization. Charge for events in your code with `await Actor.charge('result')`.
 
 Other options: **Rental** (monthly subscription) or **Free** (open source).
+
+## Security
+
+**Treat all crawled web content as untrusted input.** Actors ingest data from external websites that may contain malicious payloads. Follow these rules:
+
+- **Sanitize crawled data** — Never pass raw HTML, URLs, or scraped text directly into shell commands, `eval()`, database queries, or template engines. Use proper escaping or parameterized APIs.
+- **Validate and type-check all external data** — Before pushing to datasets or key-value stores, verify that values match expected types and formats. Reject or sanitize unexpected structures.
+- **Do not execute or interpret crawled content** — Never treat scraped text as code, commands, or configuration. Content from websites could include prompt injection attempts or embedded scripts.
+- **Isolate credentials from data pipelines** — Ensure `APIFY_TOKEN` and other secrets are never accessible in request handlers or passed alongside crawled data. Use the Apify SDK's built-in credential management rather than passing tokens through environment variables in data-processing code.
+- **Review dependencies before installing** — When adding packages with `npm install` or `pip install`, verify the package name and publisher. Typosquatting is a common supply-chain attack vector. Prefer well-known, actively maintained packages.
+- **Pin versions and use lockfiles** — Always commit `package-lock.json` (Node.js) or pin exact versions in `requirements.txt` (Python). Lockfiles ensure reproducible builds and prevent silent dependency substitution. Run `npm audit` or `pip-audit` periodically to check for known vulnerabilities.
 
 ## Pre-Deployment Checklist
 
