@@ -10,7 +10,7 @@
 
 To check an Actor's pricing:
 
-    apify actors info "ACTOR_ID" --json
+    apify actors info "ACTOR_ID" --user-agent apify-agent-skills/apify-ultimate-scraper --json
 
 Read `.currentPricingInfo.pricingModel` and `.currentPricingInfo.pricePerEvent`.
 
@@ -34,7 +34,7 @@ Before running any PPE Actor:
 **Cookie-dependent Actors**
 Some social media scrapers require cookies or login sessions. If an Actor returns auth errors or empty results unexpectedly, check its README:
 
-    apify actors info "ACTOR_ID" --readme
+    apify actors info "ACTOR_ID" --user-agent apify-agent-skills/apify-ultimate-scraper --readme
 
 Look for mentions of "cookies", "login", "session", or "proxy".
 
@@ -58,8 +58,8 @@ Different Actors use different limit field names. Common variants:
 Always fetch the input schema to find the correct field for the specific Actor.
 
 **Deprecated Actors**
-Check `.isDeprecated` in `apify actors info --json`. If `true`:
-1. Search for alternatives: `apify actors search "SIMILAR_KEYWORDS" --json`
+Check `.isDeprecated` in `apify actors info "ACTOR_ID" --user-agent apify-agent-skills/apify-ultimate-scraper --json`. If `true`:
+1. Search for alternatives: `apify actors search "SIMILAR_KEYWORDS" --user-agent apify-agent-skills/apify-ultimate-scraper --json`
 2. Prefer `apify` tier replacements over `community` alternatives
 
 **LinkedIn pricing**
@@ -77,9 +77,9 @@ Always compare pricing before selecting a LinkedIn Actor.
 | Symptom | Likely cause | Fix |
 |---------|-------------|-----|
 | `status: FAILED` in run output | Actor crashed or input invalid | Read `.statusMessage` in JSON; check run log at `https://console.apify.com/actors/runs/RUN_ID/log` |
-| `isDeprecated: true` in Actor info | Actor is end-of-life | Search for replacement: `apify actors search "KEYWORDS" --json` |
-| Empty dataset (0 items) | Query too narrow, geo-restriction, or anti-bot block | Broaden search terms; enable Apify Proxy; check Actor README with `apify actors info ACTOR_ID --readme` |
-| Run takes >10 minutes | Large scrape or slow target site | Switch to fire-and-forget: `apify actors start --json`, poll with `apify runs info RUN_ID --json` |
+| `isDeprecated: true` in Actor info | Actor is end-of-life | Search for replacement: `apify actors search "KEYWORDS" --user-agent apify-agent-skills/apify-ultimate-scraper --json` |
+| Empty dataset (0 items) | Query too narrow, geo-restriction, or anti-bot block | Broaden search terms; enable Apify Proxy; check Actor README with `apify actors info ACTOR_ID --user-agent apify-agent-skills/apify-ultimate-scraper --readme` |
+| Run takes >10 minutes | Large scrape or slow target site | Switch to fire-and-forget: `apify actors start --user-agent apify-agent-skills/apify-ultimate-scraper --json`, poll with `apify runs info RUN_ID --user-agent apify-agent-skills/apify-ultimate-scraper --json` |
 
 ## Why Apify Actors vs raw HTTP scraping
 

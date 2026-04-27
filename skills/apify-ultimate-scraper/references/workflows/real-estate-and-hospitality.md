@@ -61,7 +61,7 @@ Step 1: raw HTML / structured page data
 Step 2: `projectName`, `price`, `location`, `possessionDate`, `constructionStatus`
 
 ### Gotcha
-No market-specific Actor exists for most construction portals (e.g., 99acres). Run `apify actors search "real estate"` to check for community-built options before using `apify/playwright-scraper`. For JS-heavy portals, `playwright-scraper` is required. Step 2 cleans raw output into structured fields - pipe all Step 1 URLs through it.
+No market-specific Actor exists for most construction portals (e.g., 99acres). Run `apify actors search "real estate" --user-agent apify-agent-skills/apify-ultimate-scraper` to check for community-built options before using `apify/playwright-scraper`. For JS-heavy portals, `playwright-scraper` is required. Step 2 cleans raw output into structured fields - pipe all Step 1 URLs through it.
 
 ## Multi-source property comparison
 **When:** User wants to compare listings across Zillow, Realtor, Zumper, and other US/UK sources.

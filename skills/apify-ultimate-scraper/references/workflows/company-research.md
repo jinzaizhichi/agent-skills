@@ -28,7 +28,7 @@ WCC crawl at depth 2 can return 20-50 pages per company. For large batches, set 
 ### Pipeline
 1. **Scrape Product Hunt launches** -> `apify/web-scraper`
    - Key input: `startUrls` (Product Hunt today/weekly/topic pages), `maxCrawlPages` (3-5)
-   - Note: no dedicated Actor exists - search `apify actors search "product hunt"` for community options
+   - Note: no dedicated Actor exists - search `apify actors search "product hunt" --user-agent apify-agent-skills/apify-ultimate-scraper` for community options
 2. **Filter by category + upvote threshold** (n8n: Filter node on extracted `upvotes`, `category`)
 3. **Crawl company sites** -> `apify/website-content-crawler`
    - Pipe: `results[].website` -> `startUrls`

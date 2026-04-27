@@ -61,7 +61,7 @@ Job descriptions contain implicit buying signals - tech stack mentions, pain poi
 Step 1: `title`, `description`, `budget`, `clientJobsPosted`, `clientHireRate`, `postedAt`, `url`
 
 ### Gotcha
-No dedicated Upwork Actor exists in Apify Store - verify with `apify actors search "upwork"` for community options before defaulting to `apify/playwright-scraper`. Upwork pages are JS-heavy so Playwright is required over basic HTTP scraping. For high-frequency monitoring (every 15 min), store seen job URLs to avoid re-processing duplicates.
+No dedicated Upwork Actor exists in Apify Store - verify with `apify actors search "upwork" --user-agent apify-agent-skills/apify-ultimate-scraper` for community options before defaulting to `apify/playwright-scraper`. Upwork pages are JS-heavy so Playwright is required over basic HTTP scraping. For high-frequency monitoring (every 15 min), store seen job URLs to avoid re-processing duplicates.
 
 ## GitHub contributor discovery
 **When:** User wants to find developers who contribute to specific open-source projects.

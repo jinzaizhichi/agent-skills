@@ -40,7 +40,7 @@ Many e-commerce sites use bot protection. If `e-commerce-scraping-tool` returns 
 Flat per-result pricing. 50 ASINs daily ~ $0.10-$0.25/run.
 
 ### Gotcha
-Amazon aggressively rotates prices and sometimes shows regional prices. Always store `currency` alongside `price`. For review text (not just counts), search `apify actors search "amazon reviews"` for a dedicated Actor.
+Amazon aggressively rotates prices and sometimes shows regional prices. Always store `currency` alongside `price`. For review text (not just counts), search `apify actors search "amazon reviews" --user-agent apify-agent-skills/apify-ultimate-scraper` for a dedicated Actor.
 
 ---
 
