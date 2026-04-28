@@ -8,7 +8,7 @@ A collection of AI agent skills for web scraping, data extraction, and Actor dev
 
 ### Scraping
 
-- **[Ultimate scraper](skills/apify-ultimate-scraper/)** (`apify-ultimate-scraper`) — AI-powered web scraper for 55+ platforms including Instagram, Facebook, TikTok, YouTube, Google Maps, Amazon, Walmart, eBay, Booking.com, TripAdvisor, and more. Can also search the [Apify Store](https://apify.com/store) to find the right Actor for any platform not listed here.
+- **[Ultimate scraper](skills/apify-ultimate-scraper/)** (`apify-ultimate-scraper`) — AI-powered web scraper for 55+ platforms including Instagram, Facebook, TikTok, YouTube, Google Maps, Amazon, Walmart, eBay, Booking.com, TripAdvisor, and more. Can also search [Apify Store](https://apify.com/store) to find the right Actor for any platform not listed here.
 
 ### Development
 

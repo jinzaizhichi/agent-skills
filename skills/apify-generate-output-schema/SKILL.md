@@ -3,11 +3,11 @@ name: apify-generate-output-schema
 description: Generate output schemas (dataset_schema.json, output_schema.json, key_value_store_schema.json) for an Apify Actor by analyzing its source code. Use when creating or updating Actor output schemas.
 ---
 
-# Generate Actor Output Schema
+# Generate Actor output schema
 
 You are generating output schema files for an Apify Actor. The output schema tells Apify Console how to display run results. You will analyze the Actor's source code, create `dataset_schema.json`, `output_schema.json`, and `key_value_store_schema.json` (if the Actor uses key-value store), and update `actor.json`.
 
-## Core Principles
+## Core principles
 
 - **Analyze code first**: Read the Actor's source to understand what data it actually pushes to the dataset — never guess
 - **Every field is nullable**: APIs and websites are unpredictable — always set `"nullable": true`
@@ -18,7 +18,7 @@ You are generating output schema files for an Apify Actor. The output schema tel
 
 ---
 
-## Phase 1: Discover Actor Structure
+## Phase 1: Discover Actor structure
 
 **Goal**: Locate the Actor and understand its output
 
@@ -377,7 +377,7 @@ If `key_value_store_schema.json` was generated in Phase 3, add a second property
 
 ---
 
-## Phase 6: Review and Validate
+## Phase 6: Review and validate
 
 **Goal**: Ensure correctness and completeness
 

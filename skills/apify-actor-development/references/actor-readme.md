@@ -1,8 +1,8 @@
-# Actor README Guidelines
+# Actor README guidelines
 
 The README is the Actor's landing page on Apify Store. It serves as SEO content, first impression, usage guide, and support resource. **Always generate a README.md when creating or deploying an Actor.**
 
-## Required Structure
+## Required structure
 
 Write in Markdown. Use H2 (`##`) for main sections (these form the table of contents) and H3 (`###`) for subsections. Do not use H1 — the Actor name is automatically used as H1.
 
@@ -17,7 +17,7 @@ Write in Markdown. Use H2 (`##`) for main sections (these form the table of cont
 
 - Business use cases and benefits
 - List main features and capabilities
-- Highlight Apify platform advantages: scheduling, API access, integrations, proxy rotation, monitoring
+- Highlight the Apify platform advantages: scheduling, API access, integrations, proxy rotation, and monitoring
 
 ### 3. What data can [Actor name] extract?
 
@@ -62,7 +62,7 @@ Write in Markdown. Use H2 (`##`) for main sections (these form the table of cont
 - Link to API tab for programmatic access
 - Use cases for the extracted data
 
-## SEO Best Practices
+## SEO best practices
 
 - Include keywords naturally in H2/H3 headings (e.g., "How to scrape Instagram" not just "How to use")
 - Target "People Also Ask" style questions as H3 headings
@@ -79,12 +79,12 @@ Write in Markdown. Use H2 (`##`) for main sections (these form the table of cont
 
 ## Reference Actors
 
-Before writing a README, review these top Actors on the Apify Store for best practices on structure, tone, and content:
+Before writing a README, review these top Actors on Apify Store for best practices on structure, tone, and content:
 
 - [Instagram Scraper](https://apify.com/apify/instagram-scraper)
 - [Google Maps Scraper](https://apify.com/compass/crawler-google-places)
 
-## Key Rules
+## Key rules
 
 - Always write the README as part of Actor development — do not skip this step
 - The first 25% of the README is what most visitors read — put the most important info there

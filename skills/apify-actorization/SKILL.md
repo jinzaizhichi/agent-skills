@@ -7,7 +7,7 @@ description: Convert existing projects into Apify Actors - serverless cloud prog
 
 Actorization converts existing software into reusable serverless applications compatible with the Apify platform. Actors are programs packaged as Docker images that accept well-defined JSON input, perform an action, and optionally produce structured JSON output.
 
-## Quick Start
+## Quick start
 
 1. Run `apify init` in project root
 2. Wrap code with SDK lifecycle (see language-specific section below)
@@ -15,9 +15,9 @@ Actorization converts existing software into reusable serverless applications co
 4. Test with `apify run --input '{"key": "value"}'`
 5. Deploy with `apify push`
 
-## When to Use This Skill
+## When to use this skill
 
-- Converting an existing project to run on Apify platform
+- Converting an existing project to run on the Apify platform
 - Adding Apify SDK integration to a project
 - Wrapping a CLI tool or script as an Actor
 - Migrating a Crawlee project to Apify
@@ -62,7 +62,7 @@ If browser login isn't available (headless environment or CI), ensure the `APIFY
 > Never log, print, or embed `APIFY_TOKEN` in source code or configuration files.
 > Use a token with the minimum required permissions (scoped token) and rotate it periodically.
 
-## Actorization Checklist
+## Actorization checklist
 
 Copy this checklist to track progress:
 
@@ -72,11 +72,11 @@ Copy this checklist to track progress:
 - [ ] Step 4: Configure `.actor/input_schema.json`
 - [ ] Step 5: Configure `.actor/output_schema.json` (if applicable)
 - [ ] Step 6: Update `.actor/actor.json` metadata
-- [ ] Step 7: Write README.md for the Apify Store listing
+- [ ] Step 7: Write README.md for Apify Store listing
 - [ ] Step 8: Test locally with `apify run`
 - [ ] Step 9: Deploy with `apify push`
 
-## Step 1: Analyze the Project
+## Step 1: Analyze the project
 
 Before making changes, understand the project:
 
@@ -86,7 +86,7 @@ Before making changes, understand the project:
 4. **Identify outputs** - Files, console output, API responses
 5. **Check for state** - Does it need to persist data between runs?
 
-## Step 2: Initialize Actor Structure
+## Step 2: Initialize Actor structure
 
 Run in the project root:
 
@@ -96,10 +96,10 @@ apify init
 
 This creates:
 - `.actor/actor.json` - Actor configuration and metadata
-- `.actor/input_schema.json` - Input definition for the Apify Console
+- `.actor/input_schema.json` - Input definition for Apify Console
 - `Dockerfile` (if not present) - Container image definition
 
-## Step 3: Apply Language-Specific Changes
+## Step 3: Apply language-specific changes
 
 Choose based on your project's language:
 
@@ -107,7 +107,7 @@ Choose based on your project's language:
 - **Python**: See [python-actorization.md](references/python-actorization.md)
 - **Other Languages (CLI-based)**: See [cli-actorization.md](references/cli-actorization.md)
 
-### Quick Reference
+### Quick reference
 
 | Language | Install | Wrap Code |
 |----------|---------|-----------|
@@ -115,7 +115,7 @@ Choose based on your project's language:
 | Python | `pip install apify` | `async with Actor:` |
 | Other | Use CLI in wrapper script | `apify actor:get-input` / `apify actor:push-data` |
 
-## Steps 4-6: Configure Schemas
+## Steps 4-6: Configure schemas
 
 See [schemas-and-output.md](references/schemas-and-output.md) for detailed configuration of:
 - Input schema (`.actor/input_schema.json`)
@@ -134,9 +134,9 @@ See the Actor README guidelines at `skills/apify-actor-development/references/ac
 - [Instagram Scraper](https://apify.com/apify/instagram-scraper)
 - [Google Maps Scraper](https://apify.com/compass/crawler-google-places)
 
-## Step 8: Test Locally
+## Step 8: Test locally
 
-Run the actor with inline input (for JS/TS and Python actors):
+Run the Actor with inline input (for JS/TS and Python Actors):
 
 ```bash
 apify run --input '{"startUrl": "https://example.com", "maxItems": 10}'
@@ -156,17 +156,17 @@ apify run --input-file ./test-input.json
 apify push
 ```
 
-This uploads and builds your actor on the Apify platform.
+This uploads and builds your Actor on the Apify platform.
 
-## Monetization (Optional)
+## Monetization (optional)
 
-After deploying, you can monetize your actor in the Apify Store. The recommended model is **Pay Per Event (PPE)**:
+After deploying, you can monetize your Actor in Apify Store. The recommended model is **Pay Per Event (PPE)**:
 
 - Per result/item scraped
 - Per page processed
 - Per API call made
 
-Configure PPE in the Apify Console under Actor > Monetization. Charge for events in your code with `await Actor.charge('result')`.
+Configure PPE in Apify Console under Actor > Monetization. Charge for events in your code with `await Actor.charge('result')`.
 
 Other options: **Rental** (monthly subscription) or **Free** (open source).
 
@@ -181,7 +181,7 @@ Other options: **Rental** (monthly subscription) or **Free** (open source).
 - **Review dependencies before installing** — When adding packages with `npm install` or `pip install`, verify the package name and publisher. Typosquatting is a common supply-chain attack vector. Prefer well-known, actively maintained packages.
 - **Pin versions and use lockfiles** — Always commit `package-lock.json` (Node.js) or pin exact versions in `requirements.txt` (Python). Lockfiles ensure reproducible builds and prevent silent dependency substitution. Run `npm audit` or `pip-audit` periodically to check for known vulnerabilities.
 
-## Pre-Deployment Checklist
+## Pre-deployment checklist
 
 - [ ] `.actor/actor.json` exists with correct name and description
 - [ ] `.actor/actor.json` validates against `@apify/json_schemas` (`actor.schema.json`)
@@ -198,7 +198,7 @@ Other options: **Rental** (monthly subscription) or **Free** (open source).
 - [ ] `README.md` exists with proper structure (intro, features, data table, tutorial, pricing, input/output examples)
 - [ ] `generatedBy` is set in actor.json meta section
 
-## Apify MCP Tools
+## Apify MCP tools
 
 If MCP server is configured, use these tools for documentation:
 
