@@ -1,13 +1,13 @@
 ---
 description: Guided Apify Actor development with best practices and systematic workflow
-argument-hint: Optional actor description
+argument-hint: Optional Actor description
 ---
 
-# Actor Development
+# Actor development
 
 You are helping a developer create an Apify Actor - a serverless cloud program for web scraping, automation, and data processing. Follow a systematic approach: understand requirements, configure environment, design architecture, implement, test, and deploy.
 
-## Core Principles
+## Core principles
 
 - **Ask clarifying questions**: Identify target websites, data requirements, edge cases, and constraints before implementation
 - **Follow Apify best practices**: Use appropriate crawlers (Cheerio vs Playwright), implement proper error handling, respect rate limits
@@ -19,14 +19,14 @@ You are helping a developer create an Apify Actor - a serverless cloud program f
 
 ## Phase 1: Discovery
 
-**Goal**: Understand what actor needs to be built
+**Goal**: Understand what Actor needs to be built
 
 Initial request: $ARGUMENTS
 
 **Actions**:
 1. Create todo list with all phases
 2. Ask user for clarification if needed:
-   - What is the actor's primary purpose? (web scraping, automation, data processing)
+   - What is the Actor's primary purpose? (web scraping, automation, data processing)
    - What websites/services will it interact with?
    - What data should it extract or what actions should it perform?
    - Any specific requirements or constraints?
@@ -34,7 +34,7 @@ Initial request: $ARGUMENTS
 
 ---
 
-## Phase 2: Environment Setup
+## Phase 2: Environment setup
 
 **Goal**: Verify Apify CLI is installed and authenticated
 
@@ -51,7 +51,7 @@ Initial request: $ARGUMENTS
 
 ---
 
-## Phase 3: Language Selection
+## Phase 3: Language selection
 
 **Goal**: Choose programming language and template
 
@@ -64,13 +64,13 @@ Initial request: $ARGUMENTS
 
 ---
 
-## Phase 4: Requirements & Architecture Design
+## Phase 4: Requirements and architecture design
 
 **Goal**: Define input/output schemas and implementation approach
 
 **Actions**:
 1. Clarify detailed requirements:
-   - What input parameters should the actor accept?
+   - What input parameters should the Actor accept?
    - What output format is needed? (dataset items, key-value store files, both)
    - Should it use CheerioCrawler (10x faster for static HTML) or PlaywrightCrawler (for JavaScript-heavy sites)?
    - Concurrency settings? (HTTP: 10-50, Browser: 1-5)
@@ -86,9 +86,9 @@ Initial request: $ARGUMENTS
 
 ---
 
-## Phase 5: Actor Creation
+## Phase 5: Actor creation
 
-**Goal**: Create actor from template and configure schemas
+**Goal**: Create Actor from template and configure schemas
 
 **DO NOT START WITHOUT USER APPROVAL**
 
@@ -96,7 +96,7 @@ Initial request: $ARGUMENTS
 1. Wait for explicit user approval
 2. Copy appropriate language template from `skills/apify-actor-development/references/` directory
 3. Update `.actor/actor.json`:
-   - Set actor name and version
+   - Set Actor name and version
    - **IMPORTANT**: Fill in `generatedBy` property with current model name
    - Configure runtime, memory, timeout
    - Set `usesStandbyMode` if applicable
@@ -117,12 +117,12 @@ Initial request: $ARGUMENTS
 
 ## Phase 6: Implementation
 
-**Goal**: Implement actor logic following best practices
+**Goal**: Implement Actor logic following best practices
 
 **Actions**:
-1. Implement actor code in `src/main.py`, `src/main.js`, or `src/main.ts`
+1. Implement Actor code in `src/main.py`, `src/main.js`, or `src/main.ts`
 2. Follow best practices:
-   - ✓ Use Apify SDK (`apify`) for code running on Apify platform
+   - ✓ Use Apify SDK (`apify`) for code running on the Apify platform
    - ✓ Validate input early with proper error handling
    - ✓ Use CheerioCrawler for static HTML (10x faster)
    - ✓ Use PlaywrightCrawler only for JavaScript-heavy sites
@@ -148,7 +148,7 @@ Initial request: $ARGUMENTS
 
 **Actions**:
 1. Create README.md with:
-   - Clear description of what the actor does
+   - Clear description of what the Actor does
    - Input parameters with examples
    - Output format with examples
    - Usage instructions
@@ -159,16 +159,16 @@ Initial request: $ARGUMENTS
 
 ---
 
-## Phase 8: Local Testing
+## Phase 8: Local testing
 
-**Goal**: Test actor locally before deployment
+**Goal**: Test Actor locally before deployment
 
 **Actions**:
 1. Install dependencies:
    - JavaScript/TypeScript: `npm install`
    - Python: `pip install -r requirements.txt`
 2. Create test input file at `storage/key_value_stores/default/INPUT.json` with sample parameters
-3. Run actor locally: `apify run`
+3. Run Actor locally: `apify run`
 4. Verify:
    - Input is parsed correctly
    - Actor completes successfully
@@ -182,7 +182,7 @@ Initial request: $ARGUMENTS
 
 ## Phase 9: Deployment
 
-**Goal**: Deploy actor to Apify platform
+**Goal**: Deploy Actor to the Apify platform
 
 **DO NOT DEPLOY WITHOUT USER APPROVAL**
 
@@ -192,7 +192,7 @@ Initial request: $ARGUMENTS
 3. Actor will be deployed with name from `.actor/actor.json`
 4. Provide user with:
    - Deployment confirmation
-   - Actor URL on Apify platform
+   - Actor URL on the Apify platform
    - Instructions for running on platform
 
 ---
@@ -204,7 +204,7 @@ Initial request: $ARGUMENTS
 **Actions**:
 1. Mark all todos complete
 2. Summarize:
-   - What actor was built
+   - What Actor was built
    - Key features and capabilities
    - Input/output schemas
    - Files created/modified
@@ -213,7 +213,7 @@ Initial request: $ARGUMENTS
 
 ---
 
-## Additional Resources
+## Additional resources
 
 **MCP Tools** (if configured):
 - `search-apify-docs` - Search documentation

@@ -1,6 +1,6 @@
-# Actor Standby Mode Reference
+# Actor Standby mode reference
 
-## When to Use Standby Mode
+## When to use Standby mode
 
 Use Standby when the Actor must handle interactive, real-time HTTP requests — API endpoints, webhook receivers, real-time data lookups, MCP servers, or scraping APIs serving on-demand single-URL requests.
 
@@ -27,13 +27,13 @@ Set `usesStandbyMode: true` in `.actor/actor.json`:
 
 ### OpenAPI Schema (`webServerSchema`)
 
-Define an OpenAPI v3 schema describing the Actor's HTTP endpoints. This can be a file path (e.g., `"./openapi.json"`) or an inline object in `actor.json`. Ensure that the schema confirms to the OpenAPI spec.
+Define an OpenAPI v3 schema describing the Actor's HTTP endpoints. This can be a file path (e.g., `"./openapi.json"`) or an inline object in `actor.json`. Ensure that the schema conforms to the OpenAPI spec.
 
-**Why:** The schema is rendered as Swagger UI in the Standby tab of Apify Console and on the Actor's Store page. This lets users browse endpoint documentation and try out the API directly from the browser.
+**Why:** The schema is rendered as Swagger UI in the Standby tab of Apify Console and on the Actor's Apify Store page. This lets users browse endpoint documentation and try out the API directly from the browser.
 
 The presence of `webServerSchema` also counts as a quality metric for Actor publication.
 
-### Environment Variables
+### Environment variables
 
 | Variable | Description |
 |----------|-------------|
@@ -41,7 +41,7 @@ The presence of `webServerSchema` also counts as a quality metric for Actor publ
 | `ACTOR_STANDBY_URL` | The public Standby URL (stable across runs, format: `https://<username>--<actor-name>.apify.actor`) |
 | `APIFY_META_ORIGIN` | Set to `STANDBY` when the Actor was launched in Standby mode |
 
-## Readiness Probe
+## Readiness probe
 
 The platform sends `GET /` requests with the header `x-apify-container-server-readiness-probe` to check server readiness. You MUST respond with HTTP 200. Keep the response lightweight.
 
@@ -51,11 +51,11 @@ Callers authenticate to Standby URLs via:
 - **Bearer token** (recommended): `Authorization: Bearer <APIFY_TOKEN>`
 - **Query parameter** (fallback): `?token=<APIFY_TOKEN>`
 
-## Input Handling
+## Input handling
 
 Standby Actors receive per-request input via HTTP query parameters or request body — NOT via `INPUT.json`. The traditional input schema (`input_schema.json`) is used for Actor initialization/configuration only, not per-request data.
 
-## Complete Examples
+## Complete examples
 
 ### JavaScript / TypeScript (Express)
 
@@ -136,13 +136,13 @@ if __name__ == '__main__':
 2. Test the readiness probe: `curl -H "x-apify-container-server-readiness-probe: true" http://localhost:<port>/`
 3. Send requests with curl/httpie to verify endpoints
    
-## Standby vs. Container Web Server
+## Standby vs. container web server
 
 Do not confuse these:
 - **Container web server** (`ACTOR_WEB_SERVER_URL`): per-run unique URL, no load balancing, no auto-scaling. Useful for live view UIs during a run.
 - **Standby mode** (`ACTOR_STANDBY_URL`): stable hostname, load-balanced across runs, auto-scaled based on traffic. Use this for production APIs.
 
-## Further Reading
+## Further reading
 
 - [Developing Actors using Standby mode](https://docs.apify.com/platform/actors/development/programming-interface/standby#developing-actors-using-standby-mode)
 - [Running Actors in Standby mode](https://docs.apify.com/platform/actors/running/standby)
