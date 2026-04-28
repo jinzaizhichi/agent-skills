@@ -1,7 +1,7 @@
 # Actor index
 
 Flat lookup for Actor selection. For input schemas, fetch dynamically:
-`apify actors info "ACTOR_ID" --input --json`
+`apify actors info "ACTOR_ID" --user-agent apify-agent-skills/apify-ultimate-scraper --input --json`
 
 Tiers: `apify` = Apify-maintained (always prefer), `community` = community-maintained (fill gaps).
 

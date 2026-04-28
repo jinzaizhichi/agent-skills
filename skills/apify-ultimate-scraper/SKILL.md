@@ -7,11 +7,14 @@ description: Universal AI-powered web scraper for any platform. Scrape data from
 
 AI-driven data extraction from ~100 Actors across 15+ platforms via the Apify CLI.
 
-**Rule: Always pass `--json` and redirect stderr with `2>/dev/null` to CLI commands.** JSON output is stable across CLI versions. stderr contains progress messages that break JSON parsers if not redirected.
+**Rules for every `apify` command:**
+1. Pass `--json` for machine-readable output (stable across CLI versions).
+2. Pass `--user-agent apify-agent-skills/apify-ultimate-scraper` for telemetry attribution.
+3. Redirect stderr with `2>/dev/null` (stderr contains progress messages that break JSON parsers).
 
 ## Prerequisites
 
-- Apify CLI v1.4.0+ (`npm install -g apify-cli`)
+- Apify CLI v1.5.0+ (`npm install -g apify-cli`)
 - Authenticated session (see below)
 
 ## Authentication
@@ -51,7 +54,7 @@ If the task involves a multi-step pipeline, also read the matching workflow guid
 
 If no Actor matches in the index, search dynamically:
 
-    apify actors search "KEYWORDS" --json --limit 10 2>/dev/null
+    apify actors search "KEYWORDS" --user-agent apify-agent-skills/apify-ultimate-scraper --json --limit 10 2>/dev/null
 
 From results: `items[].username`/`items[].name` (Actor ID), `items[].title`, `items[].stats.totalUsers30Days`, `items[].currentPricingInfo.pricingModel`.
 
@@ -59,11 +62,11 @@ From results: `items[].username`/`items[].name` (Actor ID), `items[].title`, `it
 
 Fetch the input schema dynamically:
 
-    apify actors info "ACTOR_ID" --input --json 2>/dev/null
+    apify actors info "ACTOR_ID" --user-agent apify-agent-skills/apify-ultimate-scraper --input --json 2>/dev/null
 
 Also read `references/gotchas.md` to check for common pitfalls for the selected Actor.
 
-For Actor documentation: `apify actors info "ACTOR_ID" --readme`
+For Actor documentation: `apify actors info "ACTOR_ID" --user-agent apify-agent-skills/apify-ultimate-scraper --readme`
 
 ### Step 3: Configure and run
 
@@ -73,15 +76,15 @@ For larger tasks, confirm output format (quick answer / CSV / JSON) and result c
 
 **Standard run (blocking):**
 
-    apify actors call "ACTOR_ID" -i 'JSON_INPUT' --json 2>/dev/null
+    apify actors call "ACTOR_ID" -i 'JSON_INPUT' --user-agent apify-agent-skills/apify-ultimate-scraper --json 2>/dev/null
 
 From output: `.id` (run ID), `.status`, `.defaultDatasetId`, `.stats.durationMillis`
 
 **Fetch results:**
 
-    apify datasets get-items DATASET_ID --format json
+    apify datasets get-items DATASET_ID --user-agent apify-agent-skills/apify-ultimate-scraper --format json
 
-For CSV: `apify datasets get-items DATASET_ID --format csv`
+For CSV: `apify datasets get-items DATASET_ID --user-agent apify-agent-skills/apify-ultimate-scraper --format csv`
 
 **Quick answer mode:** Fetch results as JSON, pick top 5, present formatted in chat.
 
@@ -89,9 +92,9 @@ For CSV: `apify datasets get-items DATASET_ID --format csv`
 
 **Large/long-running scrapes:**
 
-    apify actors start "ACTOR_ID" -i 'JSON_INPUT' --json 2>/dev/null
+    apify actors start "ACTOR_ID" -i 'JSON_INPUT' --user-agent apify-agent-skills/apify-ultimate-scraper --json 2>/dev/null
 
-Poll: `apify runs info RUN_ID --json 2>/dev/null` (check `.status` for `SUCCEEDED`).
+Poll: `apify runs info RUN_ID --user-agent apify-agent-skills/apify-ultimate-scraper --json 2>/dev/null` (check `.status` for `SUCCEEDED`).
 
 ### Step 4: Deliver results
 
